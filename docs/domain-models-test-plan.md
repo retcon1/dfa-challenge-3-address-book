@@ -46,3 +46,34 @@ As a user I want my search results to be displayed in alphabetical order, so tha
 As a user I want to be able to delete all my contacts at once, so that I can easily refresh my entire address book if I no longer need anyone in there.
 
 As a user I don't want to be able to accidentally delete all my contacts at once, so I don't make a severe mistake.
+
+```mermaid
+classDiagram
+    class AddressBook {
+        -bookId int
+        -nextId int
+        -contacts ArrayList<Contact>
+        +addContact(contact Contact) void
+        +getContacts() ArrayList<Contact>
+        +searchByName(name String) ArrayList<Contact>
+        +searchByNumber(number N) ArrayList<Contact>
+        +searchByEmail(email String) ArrayList<Contact>
+        +removeContact(contact Contact) void
+        +deleteAllContacts() void
+    }
+    
+    class Contact {
+        -contactId int
+        -nextId int
+        -name String
+        -number String
+        -email String
+        +getName() String
+        +getNumber() String
+        +getEmail() String
+        +setName(name String) void
+        +setNumber(number String) void
+        +setEmail(email String) void
+    }
+    AddressBook <|-- Contact
+```
