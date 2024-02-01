@@ -1,19 +1,5 @@
 # Domain Models, Class Diagrams and Test Plan
 
-## Benefits of this Software
-
-As the world grows and becomes more complex, our network is also expanding rapidly, this address book will allow users to make sense of their massive network of family, friends and colleagues in one easy place.
-As well as a big responsibility for us, it signifies to users that we want to offer them something of true value; helping them connect with their loved ones more easily.
-
-
-Expanding the capabilities of software from DFCorp will allow us to become more of an integral part in our user's day-to-day lives.
-Allowing user's to have an address book means that all their valuable data is trusted with us, data that they will regularly need to access and update.
-
-Furthermore, through seeing their habits through the data they provide us, will signify in what direction we'd like to go in the future with our software.
-For example, if people are generally putting in details and connecting with those around the world, then we understand our reach to be more global.
-How often they access the address book will tell us how valuable the service we are providing is as well.
-In terms of the business, being integral to the daily lives of our users means they're putting more and more trust in us, so that when we expand our range of software,
-there is already an installed user-base ready to engage in whatever we put out. Future apps could be integrated into the address book or vice versa on top of this.
 
 ## User Stories
 
