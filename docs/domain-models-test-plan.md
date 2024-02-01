@@ -1,6 +1,5 @@
 # Domain Models, Class Diagrams and Test Plan
 
-
 ## User Stories
 
 As a user I want to be able to add a contact to my address book, so that I can store their info.
@@ -32,6 +31,14 @@ As a user I want my search results to be displayed in alphabetical order, so tha
 As a user I want to be able to delete all my contacts at once, so that I can easily refresh my entire address book if I no longer need anyone in there.
 
 As a user I don't want to be able to accidentally delete all my contacts at once, so I don't make a severe mistake.
+
+***
+
+## Co-Pilot Generated Basic Domain Model
+
+![Screenshot 2024-02-01 at 17.53.56.png](Screenshot%202024-02-01%20at%2017.53.56.png)
+
+## Class Diagram
 
 ```mermaid
 classDiagram
