@@ -48,9 +48,9 @@ classDiagram
         -contacts ArrayList<Contact>
         +addContact(contact Contact) void
         +getContacts() ArrayList<Contact>
-        +searchByName(name String) ArrayList<Contact>
-        +searchByNumber(number N) ArrayList<Contact>
-        +searchByEmail(email String) ArrayList<Contact>
+        +getContactsByName() ArrayList<Contact>
+        +getContactsByNumber() ArrayList<Contact>
+        +getContactsByEmail() ArrayList<Contact>
         +removeContact(contact Contact) void
         +deleteAllContacts() void
     }
@@ -68,5 +68,23 @@ classDiagram
         +setNumber(number String) void
         +setEmail(email String) void
     }
+    
+    class Validator {
+        <<abstract>>
+        +static validateType(input, desiredType) boolean
+        +static validateName(name) boolean
+        +static validateNumber(number) boolean
+        +static validateEmail(email) boolean
+    }
+    
+    class Searcher {
+        <<abstract>>
+        +searchByName(name String) ArrayList<Contact>
+        +searchByNumber(number String) ArrayList<Contact>
+        +searchByEmail(email String) ArrayList<Contact>
+    }
+    
     AddressBook <|-- Contact
+    AddressBook <-- Searcher
+    Contact <-- Validator
 ```
