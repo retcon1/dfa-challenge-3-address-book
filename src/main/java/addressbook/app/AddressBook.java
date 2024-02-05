@@ -20,7 +20,8 @@ public class AddressBook {
         return contacts;
     }
 
-    public void addContact(Contact contact) {
+    public void addContact(Contact contact) throws IllegalArgumentException {
+        if (Searcher.checkIfContactExists(contacts, contact)) throw new IllegalArgumentException("That contact already exists!");
         contacts.add(contact);
     }
 

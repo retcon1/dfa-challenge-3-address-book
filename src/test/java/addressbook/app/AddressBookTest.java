@@ -5,8 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class AddressBookTest {
@@ -62,6 +61,21 @@ public class AddressBookTest {
             // Assert
             assertEquals(mockContact, result);
             assertEquals(mockContact.getName(), result.getName());
+        }
+        @Test
+        public void addContactDoesNotAddIfContactExists() {
+            // Arrange
+            Contact mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("Test Name");
+            when(mockContact.getNumber()).thenReturn("12345678910");
+            when(mockContact.getEmail()).thenReturn("test@email.com");
+
+            // Act
+            testBook.addContact(mockContact);
+
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testBook.addContact(mockContact));
+            assertEquals(1, testBook.getContacts().size());
         }
     }
     @Nested
