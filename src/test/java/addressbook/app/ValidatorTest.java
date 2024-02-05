@@ -162,4 +162,57 @@ public class ValidatorTest {
             assertFalse(result);
         }
     }
+
+    @Nested
+    @DisplayName("validateAll function tests")
+    class ValidateAllFunctionTests {
+
+        @Test
+        public void validateAllReturnsTrueIfAllFieldsAreValid() {
+            // Arrange
+            String testName = "Test O'Name";
+            String testNumber = "12345678910";
+            String testEmail = "testmail@test.co.uk";
+            // Act
+            boolean result = Validator.validateAll(testName, testNumber, testEmail);
+            // Assert
+            assertTrue(result);
+        }
+
+        @Test
+        public void validateAllReturnsFalseIfNameFieldIsInvalid() {
+            // Arrange
+            String testName = "Test O'N4m3";
+            String testNumber = "12345678910";
+            String testEmail = "testmail@test.co.uk";
+            // Act
+            boolean result = Validator.validateAll(testName, testNumber, testEmail);
+            // Assert
+            assertFalse(result);
+        }
+
+        @Test
+        public void validateAllReturnsFalseIfNumberFieldIsInvalid() {
+            // Arrange
+            String testName = "Test O'Name";
+            String testNumber = "notANumber";
+            String testEmail = "testmail@test.co.uk";
+            // Act
+            boolean result = Validator.validateAll(testName, testNumber, testEmail);
+            // Assert
+            assertFalse(result);
+        }
+
+        @Test
+        public void validateAllReturnsFalseIfEmailFieldIsInvalid() {
+            // Arrange
+            String testName = "Test O'Name";
+            String testNumber = "12345678910";
+            String testEmail = "testmail@test";
+            // Act
+            boolean result = Validator.validateAll(testName, testNumber, testEmail);
+            // Assert
+            assertFalse(result);
+        }
+    }
 }
