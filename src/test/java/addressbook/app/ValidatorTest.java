@@ -15,9 +15,9 @@ public class ValidatorTest {
         // Assert
         assertInstanceOf(Validator.class, testValidator);
     }
+
     @Nested
     @DisplayName("validateType function tests")
-
     class ValidateTypeFunctionTests {
 
         @Test
@@ -40,4 +40,61 @@ public class ValidatorTest {
             assertFalse(result);
         }
     }
+
+    @Nested
+    @DisplayName("validateName function tests")
+    class ValidateNameFunctionTests {
+        // Arrange
+        @Test
+        public void validateNameReturnsTrueOnStandardName() {
+            // Arrange
+            String testName = "Test Name";
+            // Act
+            boolean result = Validator.validateName(testName);
+            // Assert
+            assertTrue(result);
+        }
+
+        @Test
+        public void validateNameReturnsFalseWhenGivenNumbers() {
+            // Arrange
+            String testName = "T3st N4me";
+            // Act
+            boolean result = Validator.validateName(testName);
+            // Assert
+            assertFalse(result);
+        }
+
+        @Test
+        public void validateNameReturnsFalseWithNoSpaces() {
+            // Arrange
+            String testName = "TestName";
+            // Act
+            boolean result = Validator.validateName(testName);
+            // Assert
+            assertFalse(result);
+        }
+
+        @Test
+        public void validateNameReturnsTrueWithHyphenatedName() {
+            // Arrange
+            String testName = "Test-test Name-name";
+            // Act
+            boolean result = Validator.validateName(testName);
+            // Assert
+            assertTrue(result);
+        }
+
+        @Test
+        public void validateNameReturnsTrueWithApostropheName() {
+            // Arrange
+            String testName = "Test O'Name";
+            // Act
+            boolean result = Validator.validateName(testName);
+            // Assert
+            assertTrue(result);
+        }
+    }
+
+
 }

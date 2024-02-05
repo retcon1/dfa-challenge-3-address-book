@@ -7,4 +7,8 @@ public class Validator {
         return obj.getClass().equals(type);
     }
 
+    public static boolean validateName(String name) {
+        String nameRegex = "^[a-zA-Z]+'?-?[a-zA-Z]*\\s[a-zA-Z]+'?-?[a-zA-Z]*$";
+        return Pattern.matches(nameRegex, name);
+    }
 }
