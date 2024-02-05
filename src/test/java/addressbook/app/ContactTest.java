@@ -11,7 +11,7 @@ public class ContactTest {
     @DisplayName("Contact class tests")
 
     class ContactClassTests {
-        @org.junit.jupiter.api.Test
+        @Test
         public void contactExists() {
             // Arrange
             Contact testContact = new Contact("Test Name", "12345678910", "testEmail@mail.com");
@@ -19,7 +19,7 @@ public class ContactTest {
             assertInstanceOf(Contact.class, testContact);
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         public void contactGettersWork() {
             // Arrange
             String testName = "Test Name";
@@ -32,7 +32,7 @@ public class ContactTest {
             assertEquals(testContact.getEmail(), testEmail);
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         public void contactSettersWork() {
             // Arrange
             String testName = "Test Name";
@@ -52,7 +52,7 @@ public class ContactTest {
             assertEquals(testContact.getEmail(), newEmail);
         }
 
-        @org.junit.jupiter.api.Test
+        @Test
         public void contactNotCreatedIfInvalid() {
             // Assert
             assertThrows(IllegalArgumentException.class, () -> new Contact("inv4lidNam3", "notaNumber", "notAnEmail")) ;
