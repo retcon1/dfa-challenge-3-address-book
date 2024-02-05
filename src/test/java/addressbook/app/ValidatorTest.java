@@ -15,9 +15,9 @@ public class ValidatorTest {
         // Assert
         assertInstanceOf(Validator.class, testValidator);
     }
-
     @Nested
     @DisplayName("validateType function tests")
+
     class ValidateTypeFunctionTests {
 
         @Test
@@ -43,6 +43,7 @@ public class ValidatorTest {
 
     @Nested
     @DisplayName("validateName function tests")
+
     class ValidateNameFunctionTests {
         // Arrange
         @Test
@@ -96,5 +97,28 @@ public class ValidatorTest {
         }
     }
 
+    @Nested
+    @DisplayName("validateEmail function tests")
+    class ValidateEmailFunctionTests {
 
+        @Test
+        public void validateEmailReturnsFalseIfInvalid() {
+            // Arrange
+            String testEmail = "testmail@com";
+            // Act
+            boolean result = Validator.validateEmail(testEmail);
+            // Assert
+            assertFalse(result);
+        }
+
+        @Test
+        public void validateEmailReturnsTrueIfValid() {
+            // Arrange
+            String testEmail = "testmail@test.co.uk";
+            // Act
+            boolean result = Validator.validateEmail(testEmail);
+            // Assert
+            assertTrue(result);
+        }
+    }
 }

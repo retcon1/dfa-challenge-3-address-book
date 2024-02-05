@@ -11,4 +11,8 @@ public class Validator {
         String nameRegex = "^[a-zA-Z]+'?-?[a-zA-Z]*\\s[a-zA-Z]+'?-?[a-zA-Z]*$";
         return Pattern.matches(nameRegex, name);
     }
+    public static boolean validateEmail(String email) {
+        String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        return Pattern.matches(emailRegex, email);
+    }
 }
