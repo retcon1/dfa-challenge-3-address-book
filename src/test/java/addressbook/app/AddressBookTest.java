@@ -64,4 +64,23 @@ public class AddressBookTest {
             assertEquals(mockContact.getName(), result.getName());
         }
     }
+    @Nested
+    @DisplayName("removeContact function tests")
+    class removeContactFunctionTests {
+
+        @Test
+        public void removeContactReducesArraySizeByOne() {
+            Contact mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("Test Name");
+            when(mockContact.getNumber()).thenReturn("12345678910");
+            when(mockContact.getEmail()).thenReturn("test@email.com");
+            testBook.addContact(mockContact);
+            System.out.println(testBook.getContacts().size());
+            // Act
+            testBook.removeContact(mockContact);
+            // Assert
+            System.out.println(testBook.getContacts().size());
+            assertEquals(0, testBook.getContacts().size());
+        }
+    }
 }

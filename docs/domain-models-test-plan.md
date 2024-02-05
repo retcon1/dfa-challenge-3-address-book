@@ -48,9 +48,9 @@ classDiagram
         -contacts ArrayList<Contact>
         +addContact(contact Contact) void
         +getContacts() ArrayList<Contact>
-        +getContactsByName() ArrayList<Contact>
-        +getContactsByNumber() ArrayList<Contact>
-        +getContactsByEmail() ArrayList<Contact>
+        +getContactsByName(name String) String / println
+        +getContactsByNumber(number String) String / println
+        +getContactsByEmail(email String) String / println
         +removeContact(contact Contact) void
         +deleteAllContacts() void
     }
@@ -82,7 +82,13 @@ classDiagram
         +searchByEmail(email String) ArrayList<Contact>
     }
     
+    class Formatter {
+        <<abstract>>
+        +formatContacts(contacts ArrayList) String
+    }
+    
     AddressBook <|-- Contact
     AddressBook <-- Searcher
+    Searcher <-- Formatter
     Contact <-- Validator
 ```
