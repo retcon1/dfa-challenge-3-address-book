@@ -56,8 +56,6 @@ classDiagram
     }
     
     class Contact {
-        -contactId int
-        -nextId int
         -name String
         -number String
         -email String
