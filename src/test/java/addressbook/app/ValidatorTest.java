@@ -121,4 +121,45 @@ public class ValidatorTest {
             assertTrue(result);
         }
     }
+
+    @Nested
+    @DisplayName("validateNumber function tests")
+    class ValidateNumberFunctionTests {
+
+        @Test
+        public void validateNumberReturnsTrueIfValid() {
+            // Arrange
+            String testNumber = "12345678910";
+            String testNumber2 = "+919367788755";
+            String testNumber3 = "786-307-3615";
+            // Act
+            boolean result = Validator.validateNumber(testNumber);
+            boolean result2 = Validator.validateNumber(testNumber2);
+            boolean result3 = Validator.validateNumber(testNumber3);
+            // Assert
+            assertTrue(result);
+            assertTrue(result2);
+            assertTrue(result3);
+        }
+
+        @Test
+        public void validateNumberReturnsFalseIfTooShort() {
+            // Arrange
+            String testNumber = "1234";
+            // Act
+            boolean result = Validator.validateNumber(testNumber);
+            // Assert
+            assertFalse(result);
+        }
+
+        @Test
+        public void validateNumberReturnsFalseIfGivenLetters() {
+            // Arrange
+            String testNumber = "12E4567891O";
+            // Act
+            boolean result = Validator.validateNumber(testNumber);
+            // Assert
+            assertFalse(result);
+        }
+    }
 }
