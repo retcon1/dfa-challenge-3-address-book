@@ -1,6 +1,8 @@
 package addressbook.app;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Searcher {
 
@@ -13,10 +15,11 @@ public class Searcher {
 
     public static ArrayList<Contact> searchByName(ArrayList<Contact> contacts, String name) {
         ArrayList<Contact> foundContacts = new ArrayList<>();
-       for (Contact contact : contacts) {
-           if (contact.getName().contains(name)) foundContacts.add(contact);
-       }
-       return foundContacts;
+        for (Contact contact : contacts) {
+            if (contact.getName().contains(name)) foundContacts.add(contact);
+        }
+        Collections.sort(foundContacts, Comparator.comparing(Contact::getName));
+        return foundContacts;
     }
 
     public static ArrayList<Contact> searchByNumber(ArrayList<Contact> contacts, String number) {
@@ -24,6 +27,7 @@ public class Searcher {
         for (Contact contact : contacts) {
             if (contact.getNumber().contains(number)) foundContacts.add(contact);
         }
+        Collections.sort(foundContacts, Comparator.comparing(Contact::getNumber));
         return foundContacts;
     }
 
@@ -32,6 +36,7 @@ public class Searcher {
         for (Contact contact : contacts) {
             if (contact.getEmail().contains(email)) foundContacts.add(contact);
         }
+        Collections.sort(foundContacts, Comparator.comparing(Contact::getEmail));
         return foundContacts;
     }
 

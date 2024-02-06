@@ -297,5 +297,28 @@ public class AddressBookTest {
             assertEquals(2, numberSearch.size());
             assertEquals(2, emailSearch.size());
         }
+        @Test
+        public void getContactsByFunctionsReturnAlphabetically() {
+            // Arrange
+            Contact mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("Test Name");
+            when(mockContact.getNumber()).thenReturn("12345678910");
+            when(mockContact.getEmail()).thenReturn("test@email.com");
+
+            Contact mockContact2 = mock(Contact.class);
+            when(mockContact2.getName()).thenReturn("Another Name");
+            when(mockContact2.getNumber()).thenReturn("12345678444");
+            when(mockContact2.getEmail()).thenReturn("test2@email.com");
+            testBook.addContact(mockContact);
+            testBook.addContact(mockContact2);
+            // Act
+            ArrayList<Contact> nameSearch = testBook.getContactsByName("ame");
+            ArrayList<Contact> numberSearch = testBook.getContactsByNumber("123");
+            ArrayList<Contact> emailSearch = testBook.getContactsByEmail("@email");
+            // Assert
+            assertEquals("Another Name", nameSearch.get(0).getName());
+            assertEquals("12345678444", numberSearch.get(0).getNumber());
+            assertEquals("test2@email.com", emailSearch.get(0).getEmail());
+        }
     }
 }
