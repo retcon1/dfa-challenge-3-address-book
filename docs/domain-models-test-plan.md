@@ -93,3 +93,10 @@ classDiagram
     AddressBook <-- Formatter
     Contact <-- Validator
 ```
+
+
+### AI Evidence 
+
+Used to figure out how to alphabetise the ArrayList for search functions.
+
+![Screenshot 2024-02-06 at 22.40.18.png](Screenshot%202024-02-06%20at%2022.40.18.png)
