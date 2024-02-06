@@ -10,7 +10,7 @@ As a user I don't want to be able to add a duplicate contact, so that I'm inform
 
 As a user I want to be able to see all the contacts in my address book, so that I know who is there at a glance.
 
-As a user I want to be able to search my contacts by name, so that I can find specific ones quickly.
+As a user I want to be able to search my contacts by name, so that I can find specific ones quickly. ✅
 
 As a user I want to be able to remove a contact from my address book, so that it doesn't get cluttered if I don't need their info anymore. ✅
 
@@ -22,9 +22,9 @@ As a user I want to be able to interact with my address book in a console interf
 
 ### Additional Stories
 
-As a user I want to be able to search for a contact by phone number, so that I can find them if I forget their name.
+As a user I want to be able to search for a contact by phone number, so that I can find them if I forget their name. ✅
 
-As a user I want to be able to search for a contact by email address, so that I can find them if I forget their name.
+As a user I want to be able to search for a contact by email address, so that I can find them if I forget their name. ✅
 
 As a user I want my search results to be displayed in alphabetical order, so that I can easily parse the resulting list.
 
@@ -87,9 +87,16 @@ classDiagram
         <<abstract>>
         +formatContacts(contacts ArrayList) String
     }
-    
+
     AddressBook <|-- Contact
     AddressBook <-- Searcher
-    Searcher <-- Formatter
+    AddressBook <-- Formatter
     Contact <-- Validator
 ```
+
+
+### AI Evidence 
+
+Used to figure out how to alphabetise the ArrayList for search functions.
+
+![Screenshot 2024-02-06 at 22.40.18.png](Screenshot%202024-02-06%20at%2022.40.18.png)
