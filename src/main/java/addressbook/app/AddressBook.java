@@ -29,4 +29,9 @@ public class AddressBook {
         if (!Searcher.checkIfContactExists(contacts, contact)) throw new IllegalArgumentException("Contact does not exist");
         contacts.remove(contact);
     }
+
+    public void removeAllContacts() {
+         ArrayList<Contact> emptyContacts = new ArrayList<>();
+         contacts = emptyContacts;
+    }
 }
