@@ -21,11 +21,12 @@ public class AddressBook {
     }
 
     public void addContact(Contact contact) throws IllegalArgumentException {
-        if (Searcher.checkIfContactExists(contacts, contact)) throw new IllegalArgumentException("That contact already exists!");
+        if (Searcher.checkIfContactExists(contacts, contact)) throw new IllegalArgumentException("That contact already exists");
         contacts.add(contact);
     }
 
     public void removeContact(Contact contact) {
+        if (!Searcher.checkIfContactExists(contacts, contact)) throw new IllegalArgumentException("Contact does not exist");
         contacts.remove(contact);
     }
 }

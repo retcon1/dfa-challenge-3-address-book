@@ -115,5 +115,25 @@ public class AddressBookTest {
             // Assert
             assertEquals(mockContact2.getName(), result);
         }
+
+        @Test
+        public void removeContactThrowsExceptionIfContactNotFound() {
+            // Arrange
+            Contact mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("Test Name");
+            when(mockContact.getNumber()).thenReturn("12345678910");
+            when(mockContact.getEmail()).thenReturn("test@email.com");
+
+            Contact mockContact2 = mock(Contact.class);
+            when(mockContact2.getName()).thenReturn("Another Name");
+            when(mockContact2.getNumber()).thenReturn("12345678444");
+            when(mockContact2.getEmail()).thenReturn("test2@email.com");
+            testBook.addContact(mockContact);
+
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testBook.removeContact(mockContact2));
+            assertEquals(1, testBook.getContacts().size());
+
+        }
     }
 }
