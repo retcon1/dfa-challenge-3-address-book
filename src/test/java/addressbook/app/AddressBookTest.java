@@ -80,7 +80,7 @@ public class AddressBookTest {
     }
     @Nested
     @DisplayName("removeContact function tests")
-    class removeContactFunctionTests {
+    class RemoveContactFunctionTests {
 
         @Test
         public void removeContactReducesArraySizeByOne() {
@@ -138,10 +138,11 @@ public class AddressBookTest {
 
     @Nested
     @DisplayName("removeAllContacts function tests")
-    class removeAllContactsFunctionTests {
+    class RemoveAllContactsFunctionTests {
 
         @Test
         public void removeAllContactsReducesContactsListSizeTo0() {
+            // Arrange
             Contact mockContact = mock(Contact.class);
             when(mockContact.getName()).thenReturn("Test Name");
             when(mockContact.getNumber()).thenReturn("12345678910");
@@ -158,6 +159,31 @@ public class AddressBookTest {
             // Assert
             assertEquals(0, testBook.getContacts().size());
             assertThrows(IndexOutOfBoundsException.class, () -> testBook.getContacts().get(0));
+        }
+    }
+
+    @Nested
+    @DisplayName("getContactsBy... function tests")
+    class GetContactsByFunctionTests {
+
+        @Test
+        public void getContactsByNameReturnsMatchingName() {
+            // Arrange
+            Contact mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("Test Name");
+            when(mockContact.getNumber()).thenReturn("12345678910");
+            when(mockContact.getEmail()).thenReturn("test@email.com");
+
+            Contact mockContact2 = mock(Contact.class);
+            when(mockContact2.getName()).thenReturn("Another Name");
+            when(mockContact2.getNumber()).thenReturn("12345678444");
+            when(mockContact2.getEmail()).thenReturn("test2@email.com");
+            testBook.addContact(mockContact);
+            testBook.addContact(mockContact2);
+            // Act
+            Contact result = testBook.getContactsByName("Another Name");
+            // Assert
+            assertEquals("Another Name", result.getName());
         }
     }
 }

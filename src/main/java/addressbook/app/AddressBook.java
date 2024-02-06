@@ -34,4 +34,8 @@ public class AddressBook {
          ArrayList<Contact> emptyContacts = new ArrayList<>();
          contacts = emptyContacts;
     }
+
+    public Contact getContactsByName(String name) {
+        return Searcher.searchByName(contacts, name);
+    }
 }

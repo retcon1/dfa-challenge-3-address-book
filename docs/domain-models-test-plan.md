@@ -52,7 +52,7 @@ classDiagram
         +getContactsByNumber(number String) String / println
         +getContactsByEmail(email String) String / println
         +removeContact(contact Contact) void
-        +deleteAllContacts() void
+        +removeAllContacts() void
     }
     
     class Contact {
