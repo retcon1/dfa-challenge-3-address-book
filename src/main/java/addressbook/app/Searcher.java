@@ -19,4 +19,20 @@ public class Searcher {
        return foundContact;
     }
 
+    public static Contact searchByNumber(ArrayList<Contact> contacts, String number) {
+        Contact foundContact = null;
+        for (Contact contact : contacts) {
+            if (contact.getNumber().equals(number)) foundContact = contact;
+        }
+        return foundContact;
+    }
+
+    public static Contact searchByEmail(ArrayList<Contact> contacts, String email) {
+        Contact foundContact = null;
+        for (Contact contact : contacts) {
+            if (contact.getEmail().equals(email)) foundContact = contact;
+        }
+        return foundContact;
+    }
+
 }

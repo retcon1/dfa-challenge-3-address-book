@@ -185,5 +185,66 @@ public class AddressBookTest {
             // Assert
             assertEquals("Another Name", result.getName());
         }
+
+        @Test
+        public void getContactsByNumberReturnsMatchingContact() {
+            // Arrange
+            Contact mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("Test Name");
+            when(mockContact.getNumber()).thenReturn("12345678910");
+            when(mockContact.getEmail()).thenReturn("test@email.com");
+
+            Contact mockContact2 = mock(Contact.class);
+            when(mockContact2.getName()).thenReturn("Another Name");
+            when(mockContact2.getNumber()).thenReturn("12345678444");
+            when(mockContact2.getEmail()).thenReturn("test2@email.com");
+            testBook.addContact(mockContact);
+            testBook.addContact(mockContact2);
+            // Act
+            Contact result = testBook.getContactsByNumber("12345678910");
+            // Assert
+            assertEquals("Test Name", result.getName());
+            assertEquals("12345678910", result.getNumber());
+        }
+
+        @Test
+        public void getContactsByEmailReturnsMatchingContact() {
+            // Arrange
+            Contact mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("Test Name");
+            when(mockContact.getNumber()).thenReturn("12345678910");
+            when(mockContact.getEmail()).thenReturn("test@email.com");
+
+            Contact mockContact2 = mock(Contact.class);
+            when(mockContact2.getName()).thenReturn("Another Name");
+            when(mockContact2.getNumber()).thenReturn("12345678444");
+            when(mockContact2.getEmail()).thenReturn("test2@email.com");
+            testBook.addContact(mockContact);
+            testBook.addContact(mockContact2);
+            // Act
+            Contact result = testBook.getContactsByEmail("test2@email.com");
+            // Assert
+            assertEquals("Another Name", result.getName());
+            assertEquals("test2@email.com", result.getEmail());
+        }
+
+        @Test
+        public void getContactsByFunctionsReturnNullIfContactDoesNotExist() {
+            // Arrange
+            Contact mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("Test Name");
+            when(mockContact.getNumber()).thenReturn("12345678910");
+            when(mockContact.getEmail()).thenReturn("test@email.com");
+
+            testBook.addContact(mockContact);
+            // Act
+            Contact nameSearch = testBook.getContactsByName("Not A Name");
+            Contact numberSearch = testBook.getContactsByNumber("Not A Number");
+            Contact emailSearch = testBook.getContactsByEmail("Not An Email");
+            // Assert
+            assertNull(nameSearch);
+            assertNull(numberSearch);
+            assertNull(emailSearch);
+        }
     }
 }
