@@ -254,5 +254,48 @@ public class AddressBookTest {
             assertEquals("Test Name", numberSearch.get(0).getName());
             assertEquals("Another Name", emailSearch.get(0).getName());
         }
+
+        @Test
+        public void getContactsByFunctionsReturnEmptyArrayListIfContactDoesNotExist() {
+            // Arrange
+            Contact mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("Test Name");
+            when(mockContact.getNumber()).thenReturn("12345678910");
+            when(mockContact.getEmail()).thenReturn("test@email.com");
+
+            testBook.addContact(mockContact);
+            // Act
+            ArrayList<Contact> nameSearch = testBook.getContactsByName("Not A Name");
+            ArrayList<Contact> numberSearch = testBook.getContactsByNumber("Not A Number");
+            ArrayList<Contact> emailSearch = testBook.getContactsByEmail("Not An Email");
+            // Assert
+            assertEquals(0, nameSearch.size());
+            assertEquals(0, numberSearch.size());
+            assertEquals(0, emailSearch.size());
+        }
+
+        @Test
+        public void getContactsByFunctionsReturnMultipleContactsForMultipleMatches() {
+            // Arrange
+            Contact mockContact = mock(Contact.class);
+            when(mockContact.getName()).thenReturn("Test Name");
+            when(mockContact.getNumber()).thenReturn("12345678910");
+            when(mockContact.getEmail()).thenReturn("test@email.com");
+
+            Contact mockContact2 = mock(Contact.class);
+            when(mockContact2.getName()).thenReturn("Another Name");
+            when(mockContact2.getNumber()).thenReturn("12345678444");
+            when(mockContact2.getEmail()).thenReturn("test2@email.com");
+            testBook.addContact(mockContact);
+            testBook.addContact(mockContact2);
+            // Act
+            ArrayList<Contact> nameSearch = testBook.getContactsByName("ame");
+            ArrayList<Contact> numberSearch = testBook.getContactsByNumber("123");
+            ArrayList<Contact> emailSearch = testBook.getContactsByEmail("@email");
+            // Assert
+            assertEquals(2, nameSearch.size());
+            assertEquals(2, numberSearch.size());
+            assertEquals(2, emailSearch.size());
+        }
     }
 }
