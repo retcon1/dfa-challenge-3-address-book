@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -181,9 +183,10 @@ public class AddressBookTest {
             testBook.addContact(mockContact);
             testBook.addContact(mockContact2);
             // Act
-            Contact result = testBook.getContactsByName("Another Name");
+            ArrayList<Contact> result = testBook.getContactsByName("Another Name");
             // Assert
-            assertEquals("Another Name", result.getName());
+            assertEquals(1, result.size());
+            assertEquals("Another Name", result.get(0).getName());
         }
 
         @Test
@@ -201,10 +204,10 @@ public class AddressBookTest {
             testBook.addContact(mockContact);
             testBook.addContact(mockContact2);
             // Act
-            Contact result = testBook.getContactsByNumber("12345678910");
+            ArrayList<Contact> result = testBook.getContactsByNumber("12345678910");
             // Assert
-            assertEquals("Test Name", result.getName());
-            assertEquals("12345678910", result.getNumber());
+            assertEquals("Test Name", result.get(0).getName());
+            assertEquals("12345678910", result.get(0).getNumber());
         }
 
         @Test
@@ -222,29 +225,34 @@ public class AddressBookTest {
             testBook.addContact(mockContact);
             testBook.addContact(mockContact2);
             // Act
-            Contact result = testBook.getContactsByEmail("test2@email.com");
+            ArrayList<Contact> result = testBook.getContactsByEmail("test2@email.com");
             // Assert
-            assertEquals("Another Name", result.getName());
-            assertEquals("test2@email.com", result.getEmail());
+            assertEquals("Another Name", result.get(0).getName());
+            assertEquals("test2@email.com", result.get(0).getEmail());
         }
 
         @Test
-        public void getContactsByFunctionsReturnNullIfContactDoesNotExist() {
+        public void getContactsByFunctionsReturnContactWhenOnlyGivenSomeInfo() {
             // Arrange
             Contact mockContact = mock(Contact.class);
             when(mockContact.getName()).thenReturn("Test Name");
             when(mockContact.getNumber()).thenReturn("12345678910");
             when(mockContact.getEmail()).thenReturn("test@email.com");
 
+            Contact mockContact2 = mock(Contact.class);
+            when(mockContact2.getName()).thenReturn("Another Name");
+            when(mockContact2.getNumber()).thenReturn("12345678444");
+            when(mockContact2.getEmail()).thenReturn("test2@email.com");
             testBook.addContact(mockContact);
+            testBook.addContact(mockContact2);
             // Act
-            Contact nameSearch = testBook.getContactsByName("Not A Name");
-            Contact numberSearch = testBook.getContactsByNumber("Not A Number");
-            Contact emailSearch = testBook.getContactsByEmail("Not An Email");
+            ArrayList<Contact> nameSearch = testBook.getContactsByName("other");
+            ArrayList<Contact> numberSearch = testBook.getContactsByNumber("910");
+            ArrayList<Contact> emailSearch = testBook.getContactsByEmail("test2");
             // Assert
-            assertNull(nameSearch);
-            assertNull(numberSearch);
-            assertNull(emailSearch);
+            assertEquals("Another Name", nameSearch.get(0).getName());
+            assertEquals("Test Name", numberSearch.get(0).getName());
+            assertEquals("Another Name", emailSearch.get(0).getName());
         }
     }
 }

@@ -35,15 +35,15 @@ public class AddressBook {
          contacts = emptyContacts;
     }
 
-    public Contact getContactsByName(String name) {
+    public ArrayList<Contact> getContactsByName(String name) {
         return Searcher.searchByName(contacts, name);
     }
 
-    public Contact getContactsByNumber(String number) {
+    public ArrayList<Contact> getContactsByNumber(String number) {
         return Searcher.searchByNumber(contacts, number);
     }
 
-    public Contact getContactsByEmail(String email) {
+    public ArrayList<Contact> getContactsByEmail(String email) {
         return Searcher.searchByEmail(contacts, email);
     }
 }

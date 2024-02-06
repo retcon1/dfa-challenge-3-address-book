@@ -11,28 +11,28 @@ public class Searcher {
         return nameCheck || numberCheck || emailCheck;
     }
 
-    public static Contact searchByName(ArrayList<Contact> contacts, String name) {
-       Contact foundContact = null;
+    public static ArrayList<Contact> searchByName(ArrayList<Contact> contacts, String name) {
+        ArrayList<Contact> foundContacts = new ArrayList<>();
        for (Contact contact : contacts) {
-           if (contact.getName().equals(name)) foundContact = contact;
+           if (contact.getName().contains(name)) foundContacts.add(contact);
        }
-       return foundContact;
+       return foundContacts;
     }
 
-    public static Contact searchByNumber(ArrayList<Contact> contacts, String number) {
-        Contact foundContact = null;
+    public static ArrayList<Contact> searchByNumber(ArrayList<Contact> contacts, String number) {
+        ArrayList<Contact> foundContacts = new ArrayList<>();;
         for (Contact contact : contacts) {
-            if (contact.getNumber().equals(number)) foundContact = contact;
+            if (contact.getNumber().contains(number)) foundContacts.add(contact);
         }
-        return foundContact;
+        return foundContacts;
     }
 
-    public static Contact searchByEmail(ArrayList<Contact> contacts, String email) {
-        Contact foundContact = null;
+    public static ArrayList<Contact> searchByEmail(ArrayList<Contact> contacts, String email) {
+        ArrayList<Contact> foundContacts = new ArrayList<>();;
         for (Contact contact : contacts) {
-            if (contact.getEmail().equals(email)) foundContact = contact;
+            if (contact.getEmail().contains(email)) foundContacts.add(contact);
         }
-        return foundContact;
+        return foundContacts;
     }
 
 }
