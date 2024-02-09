@@ -49,5 +49,20 @@ public class PrinterTest {
             String expectedOutput = "Test Name || 12345678910 || test@email.com\nAnother Name || 12345678444 || test2@email.com\n";
             assertEquals(expectedOutput, outputStreamCaptor.toString());
         }
+
+        @Test
+        public void functionPrintsNoContactsMessageIfGivenEmptyArrayList() {
+            // Arrange
+            ArrayList<Contact> mockContactList = new ArrayList<>();
+            ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outputStreamCaptor));
+
+            // Act
+            Printer.printContacts(mockContactList);
+
+            // Assert
+            String expectedOutput = "No contacts found\n";
+            assertEquals(expectedOutput, outputStreamCaptor.toString());
+        }
     }
 }

@@ -17,6 +17,10 @@ public class Printer {
      }
      */
     public static void printContacts(ArrayList<Contact> contacts) {
+        if (contacts.isEmpty()) {
+            System.out.println("No contacts found");
+            return;
+        }
         String formattedContacts = formatContacts(contacts);
         System.out.println(formattedContacts);
     }
