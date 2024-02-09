@@ -4,18 +4,27 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class FormatterTest {
+public class PrinterTest {
+
+    @Test
+    public void printerClassExists() {
+        Printer myPrinter = new Printer();
+        assertInstanceOf(Printer.class, myPrinter);
+    }
     @Nested
     @DisplayName("formatContactsArrayList function returns a properly formatted string when given an ArrayList of contacts")
-    class FormatContactsArrayListFunction {
+    class PrintContactsFunction {
         @Test
-        public void functionReturnsProperlyFormattedString() {
+        public void functionPrintsOutListToConsole() {
             // Arrange
             Contact mockContact = mock(Contact.class);
             when(mockContact.getName()).thenReturn("Test Name");
@@ -30,11 +39,15 @@ public class FormatterTest {
             ArrayList<Contact> mockContactList = new ArrayList<>();
             mockContactList.add(mockContact);
             mockContactList.add(mockContact2);
-            String expectedResult = "Test Name || 12345678910 || test@email.com\nAnother Name || 12345678444 || test2@email.com\n";
+            ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outputStreamCaptor));
+
             // Act
-            String result = Formatter.formatContactsArrayList(mockContactList);
+            Printer.printContacts(mockContactList);
+
             // Assert
-            assertEquals(expectedResult, result);
+            String expectedOutput = "Test Name || 12345678910 || test@email.com\nAnother Name || 12345678444 || test2@email.com\n";
+            assertEquals(expectedOutput, outputStreamCaptor.toString());
         }
     }
 }
