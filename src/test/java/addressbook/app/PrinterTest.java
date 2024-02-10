@@ -46,7 +46,7 @@ public class PrinterTest {
             Printer.printContacts(mockContactList);
 
             // Assert
-            String expectedOutput = "Test Name || 12345678910 || test@email.com\nAnother Name || 12345678444 || test2@email.com\n";
+            String expectedOutput = "0. Test Name || 12345678910 || test@email.com\n1. Another Name || 12345678444 || test2@email.com\n";
             assertEquals(expectedOutput, outputStreamCaptor.toString());
         }
 

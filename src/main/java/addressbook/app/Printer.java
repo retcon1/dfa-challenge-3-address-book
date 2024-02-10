@@ -2,6 +2,7 @@ package addressbook.app;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Printer {
 
@@ -25,9 +26,13 @@ public class Printer {
         System.out.println(formattedContacts);
     }
 
+    public static void printContact(Contact contact) {
+        System.out.printf("%s | %s | %s\n", contact.getName(), contact.getNumber(), contact.getEmail());
+    }
+
     public static String formatContacts(ArrayList<Contact> contacts) {
-        return contacts.stream()
-                .map(contact -> contact.getName() + " || " + contact.getNumber() + " || " + contact.getEmail())
+        return IntStream.range(0, contacts.size())
+                .mapToObj(i -> (i) + ". " + contacts.get(i).getName() + " || " + contacts.get(i).getNumber() + " || " + contacts.get(i).getEmail())
                 .collect(Collectors.joining("\n"));
     }
 }
