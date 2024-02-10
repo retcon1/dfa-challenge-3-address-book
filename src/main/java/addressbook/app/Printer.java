@@ -27,7 +27,7 @@ public class Printer {
     }
 
     public static void printContact(Contact contact) {
-        System.out.printf("%s | %s | %s\n", contact.getName(), contact.getNumber(), contact.getEmail());
+        System.out.println(contact.getName() + " | " + contact.getNumber() + " | " + contact.getEmail());
     }
 
     public static String formatContacts(ArrayList<Contact> contacts) {

@@ -11,11 +11,12 @@ public class AddMenu {
         System.out.println("Finally, enter their email address: ");
         String email = input.nextLine();
         System.out.println("Now we'll try adding it to your contacts...\n");
+
         try {
             Contact newContact = new Contact(name, number, email);
             App.myAddressBook.addContact(newContact);
         } catch (IllegalArgumentException e) {
-            System.out.printf("%s, please try again!\n", e.getMessage());
+            System.out.println(e.getMessage() + ", please try again!");
             addNewContact();
         }
         System.out.println("Successfully added new contact! \n");

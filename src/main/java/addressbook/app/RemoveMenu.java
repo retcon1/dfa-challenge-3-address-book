@@ -5,7 +5,7 @@ import static addressbook.app.App.myAddressBook;
 
 public class RemoveMenu {
     public static void removeContact() {
-        System.out.println("Please enter the number of the contact you'd like to remove...");
+        System.out.println("Please enter the number of the contact you'd like to remove:");
         Printer.printContacts(myAddressBook.getContacts());
         String indexToRemove = input.nextLine();
         try {

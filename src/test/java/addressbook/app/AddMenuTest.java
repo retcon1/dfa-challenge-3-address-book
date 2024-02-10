@@ -3,6 +3,7 @@ package addressbook.app;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.AfterEach;
@@ -10,6 +11,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 
 public class AddMenuTest {
@@ -38,14 +41,15 @@ public class AddMenuTest {
 
     @Test
     public void testAddNewContact_InvalidInput_OnlyOneAdded() {
-        String invalidInput = "John Doe\ninvalidNumber\njohn@example.com\n";
-        String validInput = "Valid Input\n12345678911\ntest@test.com\n7";
-        provideInput(invalidInput);
-        provideInput(validInput);
+        PrintStream outMock = mock(PrintStream.class);
+        System.setOut(outMock);
+        String input = "John Doe\ninvalidNumber\njohn@example.com\nValid Input\n12340987561\ntest@test.com\n7\n7";
+        provideInput(input);
 
         addMenu.addNewContact();
 
         assertEquals(1, App.myAddressBook.getContacts().size());
+        verify(outMock).println("Name, Phone Number or Email is invalid, please try again!");
     }
 
     private void provideInput(String data) {
