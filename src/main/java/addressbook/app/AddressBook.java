@@ -21,7 +21,7 @@ public class AddressBook {
     }
 
     public void addContact(Contact contact) throws IllegalArgumentException {
-        if (Searcher.checkIfContactExists(contacts, contact)) throw new IllegalArgumentException("That contact already exists");
+        if (Searcher.checkIfContactExists(contacts, contact) || contact == null) throw new IllegalArgumentException("That contact already exists");
         contacts.add(contact);
     }
 

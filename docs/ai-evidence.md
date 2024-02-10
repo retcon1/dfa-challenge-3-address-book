@@ -21,3 +21,8 @@ This didn't function correctly sadly, even after going back and forth.
 However, it gave me a general template to work from, which you can see in all the Menu tests, utilising the provideInput function was especially useful.
 
 Sadly I couldn't figure out how to properly incorporate more mocking in these tests, so they're possibly more tightly coupled than I would like.
+
+### Used to add more tests for edge/corner cases...
+
+![Screenshot 2024-02-10 at 14.44.47.png](Screenshot%202024-02-10%20at%2014.44.47.png)
+![Screenshot 2024-02-10 at 14.45.03.png](Screenshot%202024-02-10%20at%2014.45.03.png)

@@ -18,13 +18,19 @@ public class AddressBookTest {
         testBook = new AddressBook();
     }
     @Nested
-    @DisplayName("AddressBook class exists with appropriate ID")
+    @DisplayName("AddressBook core class tests")
     class AddressBookExistsWithId {
         @Test
         public void addressBookExistsWithId() {
             // Assert
             assertInstanceOf(AddressBook.class, testBook);
             assertInstanceOf(Integer.class, testBook.getId());
+        }
+
+        @Test
+        public void addressBookIsEmptyInitially() {
+            // Assert
+            assertTrue(testBook.getContacts().isEmpty());
         }
     }
 
@@ -47,6 +53,13 @@ public class AddressBookTest {
             // Assert
             assertEquals(1, result);
         }
+
+        @Test
+        public void addingNullContactThrowsException() {
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testBook.addContact(null));
+        }
+
 
         @Test
         public void addContactPutsInstanceOfContactIntoArrayList() {
@@ -136,6 +149,13 @@ public class AddressBookTest {
             assertThrows(IllegalArgumentException.class, () -> testBook.removeContact(mockContact2));
             assertEquals(1, testBook.getContacts().size());
         }
+
+        @Test
+        public void removingNullContactThrowsException() {
+            // Assert
+            assertThrows(IllegalArgumentException.class, () -> testBook.removeContact(null));
+        }
+
     }
 
     @Nested
