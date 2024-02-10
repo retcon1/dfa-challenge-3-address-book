@@ -31,3 +31,7 @@ Sadly I couldn't figure out how to properly incorporate more mocking in these te
 ![Screenshot 2024-02-10 at 14.44.47.png](Screenshot%202024-02-10%20at%2014.44.47.png)
 ![Screenshot 2024-02-10 at 14.45.03.png](Screenshot%202024-02-10%20at%2014.45.03.png)
 
+### Used to help clearly document the AddressBook class
+
+![Screenshot 2024-02-10 at 14.56.01.png](Screenshot%202024-02-10%20at%2014.56.01.png)
+![Screenshot 2024-02-10 at 14.56.08.png](Screenshot%202024-02-10%20at%2014.56.08.png)
