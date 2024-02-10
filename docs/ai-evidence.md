@@ -22,7 +22,12 @@ However, it gave me a general template to work from, which you can see in all th
 
 Sadly I couldn't figure out how to properly incorporate more mocking in these tests, so they're possibly more tightly coupled than I would like.
 
+### Demonstration for use in regular test cases
+
+![Screenshot 2024-02-10 at 14.50.04.png](Screenshot%202024-02-10%20at%2014.50.04.png)
+
 ### Used to add more tests for edge/corner cases...
 
 ![Screenshot 2024-02-10 at 14.44.47.png](Screenshot%202024-02-10%20at%2014.44.47.png)
 ![Screenshot 2024-02-10 at 14.45.03.png](Screenshot%202024-02-10%20at%2014.45.03.png)
+

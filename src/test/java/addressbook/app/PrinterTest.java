@@ -8,8 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -63,6 +62,52 @@ public class PrinterTest {
             // Assert
             String expectedOutput = "No contacts found\n";
             assertEquals(expectedOutput, outputStreamCaptor.toString());
+        }
+
+        @Test
+        public void testPrintContactsNonEmptyList() {
+            // Arrange
+            ArrayList<Contact> contacts = new ArrayList<>();
+            contacts.add(new Contact("John Doe", "1234567890", "john@example.com"));
+            contacts.add(new Contact("Jane Smith", "0987654321", "jane@example.com"));
+
+            // Act (assuming printContacts prints to System.out)
+            ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outContent));
+            Printer.printContacts(contacts);
+
+            // Assert
+            assertTrue(outContent.toString().contains("John Doe"));
+            assertTrue(outContent.toString().contains("Jane Smith"));
+        }
+
+        @Test
+        public void testPrintContact() {
+            // Arrange
+            Contact contact = new Contact("John Doe", "1234567890", "john@example.com");
+
+            // Act (assuming printContact prints to System.out)
+            ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(outContent));
+            Printer.printContact(contact);
+
+            // Assert
+            assertEquals("John Doe | 1234567890 | john@example.com\n", outContent.toString());
+        }
+
+        @Test
+        public void testFormatContacts() {
+            // Arrange
+            ArrayList<Contact> contacts = new ArrayList<>();
+            contacts.add(new Contact("John Doe", "1234567890", "john@example.com"));
+            contacts.add(new Contact("Jane Smith", "0987654321", "jane@example.com"));
+
+            // Act
+            String formattedContacts = Printer.formatContacts(contacts);
+
+            // Assert
+            assertTrue(formattedContacts.contains("0. John Doe || 1234567890 || john@example.com"));
+            assertTrue(formattedContacts.contains("1. Jane Smith || 0987654321 || jane@example.com"));
         }
     }
 }
